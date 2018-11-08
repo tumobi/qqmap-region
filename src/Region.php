@@ -9,6 +9,7 @@ use Tumobi\QQMapRegion\Exceptions\InvalidArgumentException;
 class Region
 {
     protected $key = '';
+
     protected $guzzleOptions = [];
 
     public function __construct($key)
@@ -21,13 +22,14 @@ class Region
         $url = 'https://apis.map.qq.com/ws/district/v1/list';
 
         $query = array_filter([
-            'key' => $this->key
+            'key' => $this->key,
         ]);
 
         try {
             $result = $this->getHttpClient()->get($url, [
                 'query' => $query,
             ])->getBody()->getContents();
+
             return json_decode($result, true);
         } catch (\Exception $e) {
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
@@ -44,13 +46,14 @@ class Region
 
         $query = array_filter([
             'key' => $this->key,
-            'id' => $id
+            'id' => $id,
         ]);
 
         try {
             $result = $this->getHttpClient()->get($url, [
                 'query' => $query,
             ])->getBody()->getContents();
+
             return json_decode($result, true);
         } catch (\Exception $e) {
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
@@ -67,13 +70,14 @@ class Region
 
         $query = array_filter([
             'key' => $this->key,
-            'keyword' => $keyword
+            'keyword' => $keyword,
         ]);
 
         try {
             $result = $this->getHttpClient()->get($url, [
                 'query' => $query,
             ])->getBody()->getContents();
+
             return json_decode($result, true);
         } catch (\Exception $e) {
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
