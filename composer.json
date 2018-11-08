@@ -1,0 +1,19 @@
+{
+    "name": "tumobi/qqmap-region",
+    "description": "腾讯位置服务中国标准行政区划数据 SDK",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tumobi",
+            "email": "tumobi@163.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tumobi\\QQMapRegion\\": "src"
+        }
+    }
+}
