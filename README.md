@@ -2,6 +2,9 @@
 
 <p align="center"> 腾讯位置服务中国标准行政区划数据 SDK.</p>
 
+<p align="center">
+    <a href="https://github.styleci.io/repos/156715216"><img src="https://github.styleci.io/repos/156715216/shield?branch=master" alt="StyleCI"></a>
+</p>
 
 ## 安装
 
