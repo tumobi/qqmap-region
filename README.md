@@ -46,6 +46,37 @@ $result = $region->searchDistrict($keyword);
 print_r($result);
 ```
 
+## 在 Laravel 中使用
+安装方式同上，需要添加两处配置，在 config/services.php 加入如下配置
+```php
+
+'region' => [
+    'key' => env('REGION_KEY'),
+],
+```
+
+在 .env 文件中加入如下配置
+```
+REGION_KEY=在腾讯位置服务创建的key
+
+```
+
+### 使用方法
+```php
+public function edit(Region $region) 
+{
+    $districts = $region->getAllDistrict();
+}
+```
+
+或
+```php
+public function edit() 
+{
+    $districts = app('region')->getAllDistrict();
+}
+```
+
 ## 参考
 + [行政区划 | 腾讯位置服务](https://lbs.qq.com/webservice_v1/guide-region.html)
 + [PHP 扩展包实战教程 - 从入门到发布](https://laravel-china.org/courses/creating-package?rf=23775)
