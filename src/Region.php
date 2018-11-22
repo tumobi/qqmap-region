@@ -12,6 +12,8 @@ class Region
 
     protected $guzzleOptions = [];
 
+    private $caches = [];
+
     public function __construct($key)
     {
         $this->key = $key;
@@ -19,6 +21,10 @@ class Region
 
     public function getAllDistrict()
     {
+        if (isset($this->caches['allDistrict']) && !empty($this->caches['allDistrict'])) {
+            return $this->caches['allDistrict'];
+        }
+
         $url = 'https://apis.map.qq.com/ws/district/v1/list';
 
         $query = array_filter([
@@ -30,7 +36,9 @@ class Region
                 'query' => $query,
             ])->getBody()->getContents();
 
-            return json_decode($result, true);
+            $result = json_decode($result, true);
+            $this->caches['allDistrict'] = $result;
+            return $result;
         } catch (\Exception $e) {
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }
