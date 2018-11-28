@@ -46,6 +46,12 @@ $result = $region->searchDistrict($keyword);
 print_r($result);
 ```
 
+### 获取省市区三级选择器行政区划数据
+```php
+$result = $region->getSelectorRegions();
+print_r($result);
+```
+
 ## 在 Laravel 中使用
 安装方式同上，需要添加两处配置，在 config/services.php 加入如下配置
 ```php
